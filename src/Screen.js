@@ -5,7 +5,7 @@ const Screen = () => {
   return (
     <SafeAreaView>
       <View>
-        <Text>画面遷移やってみよう</Text>
+        <Text>ReactNavigationを使って画面遷移をやってみよう</Text>
       </View>
     </SafeAreaView>
   );
