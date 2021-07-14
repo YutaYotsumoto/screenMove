@@ -2,10 +2,9 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import {SafeAreaView, Button, Text, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-//①インポート
 import {createStackNavigator} from '@react-navigation/stack';
 
-//②最初に表示する画面関数
+//HomeScreen関数
 const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.HomeScreen}>
@@ -18,19 +17,23 @@ const HomeScreen = ({navigation}) => {
   );
 };
 
-//2番目に表示する画面関数
-const ProjectScreen = () => {
+//ProjectScreen関数
+const ProjectScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.HomeScreen}>
       <Text>Project Screen</Text>
+      <Button
+        title="Jump to Project ... again"
+        onPress={() => navigation.push('Project')}
+      />
     </SafeAreaView>
   );
 };
 
-//③定数Stack内にcreateStackNavigator代入
+//定数Stack内にcreateStackNavigator
 const Stack = createStackNavigator();
 
-//④Stack.Screen　nameでNavBarの記述　componentでcontentAreaにProjectScreen関数　をrun
+//App関数内でNavigator　Screen　コンポネントをrun
 const App = () => {
   return (
     <NavigationContainer>
