@@ -10,7 +10,7 @@ const HomeScreen = ({navigation}) => {
     <SafeAreaView style={styles.HomeScreen}>
       <Text>Home Screen</Text>
       <Button
-        title="Jump to Project"
+        title="Head to Project"
         onPress={() => navigation.navigate('Project')}
       />
     </SafeAreaView>
@@ -23,9 +23,12 @@ const ProjectScreen = ({navigation}) => {
     <SafeAreaView style={styles.HomeScreen}>
       <Text>Project Screen</Text>
       <Button
-        title="Jump to Project ... again"
+        title="Head to Project ... again"
         onPress={() => navigation.push('Project')}
       />
+      <Button title="back Home" onPress={() => navigation.navigate('Home')} />
+      <Button title="back FirstScreen" onPress={() => navigation.popToTop()} />
+      <Button title="goBack LastScreen" onPress={() => navigation.goBack()} />
     </SafeAreaView>
   );
 };
