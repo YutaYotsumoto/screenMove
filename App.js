@@ -6,11 +6,20 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {SafeAreaView, Text, StyleSheet} from 'react-native';
 
-//②画面表示するための関数コンポネントを作成
+//②最初に表示する画面関数
+const HomeScreen = () => {
+  return (
+    <SafeAreaView style={styles.HomeScreen}>
+      <Text>Home Screen</Text>
+    </SafeAreaView>
+  );
+};
+
+//2番目に表示する画面関数
 const ProjectScreen = () => {
   return (
     <SafeAreaView style={styles.HomeScreen}>
-      <Text>Project一覧表示</Text>
+      <Text>Project Screen</Text>
     </SafeAreaView>
   );
 };
@@ -22,8 +31,9 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={ProjectScreen} />
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Project" component={ProjectScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
