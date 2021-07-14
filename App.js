@@ -1,16 +1,19 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
+import {SafeAreaView, Button, Text, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 //①インポート
 import {createStackNavigator} from '@react-navigation/stack';
 
-import {SafeAreaView, Text, StyleSheet} from 'react-native';
-
 //②最初に表示する画面関数
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.HomeScreen}>
       <Text>Home Screen</Text>
+      <Button
+        title="Jump to Project"
+        onPress={() => navigation.navigate('Project')}
+      />
     </SafeAreaView>
   );
 };
