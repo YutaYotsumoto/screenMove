@@ -11,20 +11,30 @@ const HomeScreen = ({navigation}) => {
       <Text>Home Screen</Text>
       <Button
         title="Head to Project"
-        onPress={() => navigation.navigate('Project')}
+        onPress={() =>
+          navigation.navigate('Project', {
+            itemId: 86,
+            otherParam: 'anything you want here',
+          })
+        }
       />
     </SafeAreaView>
   );
 };
 
 //ProjectScreen関数
-const ProjectScreen = ({navigation}) => {
+const ProjectScreen = ({route, navigation}) => {
+  const {itemId, otherParam} = route.params;
   return (
     <SafeAreaView style={styles.HomeScreen}>
       <Text>Project Screen</Text>
+      <Text>itemId: {JSON.stringify(itemId)}</Text>
+      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
       <Button
         title="Head to Project ... again"
-        onPress={() => navigation.push('Project')}
+        onPress={() =>
+          navigation.push('Project', {itemId: Math.floor(Math.random() * 100)})
+        }
       />
       <Button title="back Home" onPress={() => navigation.navigate('Home')} />
       <Button title="back FirstScreen" onPress={() => navigation.popToTop()} />
