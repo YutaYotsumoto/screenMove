@@ -1,47 +1,14 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import {SafeAreaView, Button, Text, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-//HomeScreen関数
-const HomeScreen = ({navigation}) => {
-  return (
-    <SafeAreaView style={styles.HomeScreen}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Head to Project"
-        onPress={() =>
-          navigation.navigate('Project', {
-            itemId: 86,
-            otherParam: 'anything you want here',
-          })
-        }
-      />
-    </SafeAreaView>
-  );
-};
+import HomeScreen from './src/Screens/HomeScreen';
+import ProjectScreen from './src/Screens/ProjectScreen';
 
-//ProjectScreen関数
-const ProjectScreen = ({route, navigation}) => {
-  const {itemId, otherParam} = route.params;
-  return (
-    <SafeAreaView style={styles.HomeScreen}>
-      <Text>Project Screen</Text>
-      <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-      <Button
-        title="Head to Project ... again"
-        onPress={() =>
-          navigation.push('Project', {itemId: Math.floor(Math.random() * 100)})
-        }
-      />
-      <Button title="back Home" onPress={() => navigation.navigate('Home')} />
-      <Button title="back FirstScreen" onPress={() => navigation.popToTop()} />
-      <Button title="goBack LastScreen" onPress={() => navigation.goBack()} />
-    </SafeAreaView>
-  );
-};
+<HomeScreen />;
+
+<ProjectScreen />;
 
 //定数Stack内にcreateStackNavigator
 const Stack = createStackNavigator();
@@ -56,18 +23,14 @@ const App = () => {
           component={HomeScreen}
           // options={{title: 'overview'}}
         />
-        <Stack.Screen name="Project" component={ProjectScreen} />
+        <Stack.Screen
+          name="Project"
+          component={ProjectScreen}
+          // initialParams={{itemId: 2}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  HomeScreen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 
 export default App;
